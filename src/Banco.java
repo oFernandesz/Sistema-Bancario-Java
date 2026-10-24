@@ -11,13 +11,14 @@ public class Banco {
         int num = contas.size() + 1;
         Conta novaConta = new Conta(num, name, password);
         contas.add(novaConta);
+        System.out.println("Numero da conta - "+novaConta.getNumber());
 
     return true;
     }
 
     void getContas(){
-        for(int i = 1;i <= contas.size(); i++){
-            System.out.println("Conta - "+contas.getFirst().getNumber()+ " - "+contas.getLast().getName());
+        for(int i = 0;i < contas.size(); i++){
+            System.out.println("Conta - "+contas.get(i).getNumber()+ " - "+contas.get(i).getName());
         }
     }
 

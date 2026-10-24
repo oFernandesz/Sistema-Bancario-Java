@@ -7,7 +7,7 @@ public class Conta {
     public Conta(int number, String name, int password){
         this.number = number;
         this.name = name;
-        this.balance = 0;
+        this.balance = 100;
         this.password = password;
     }
 
@@ -31,7 +31,7 @@ public class Conta {
 
     void depositar(double valor){
         this.balance = this.balance + valor;
-        System.out.println("Deposito de "+valor+" Realizado com Sucesso!!!");
+        System.out.println("Deposito de R$"+valor+" Realizado com Sucesso!!!");
     }
 
     void sacar(double valor){
@@ -48,7 +48,14 @@ public class Conta {
             System.out.println("Transferencia invalida!");
         }else{
             this.balance = this.balance - valor;
+            destino.balance = destino.balance + valor;
+            System.out.println("Transferencia realizada com sucesso! ");
+
         }
+    }
+
+    public boolean validarSenha(int senhaInformada){
+        return this.password == senhaInformada;
     }
 
 
