@@ -118,9 +118,12 @@ void main(){
                                         sc.nextLine();
                                         continue;
                                     }
-                                     Conta destino = banco.buscarConta(numDestino);
+                                    Conta destino = banco.buscarConta(numDestino);
                                     if(destino != null){
                                         System.out.println("Conta a transferir: "+destino.getName());
+                                    } else{
+                                        System.out.println("Conta não encontrada! ");
+                                        break;
                                     }
                                     if(conta.getBalance() == 0){
                                         System.out.println("Saldo insuficiente para efetuar pagamento!");
@@ -156,21 +159,46 @@ void main(){
                                         sc.nextLine();
                                         continue;
                                     }
-                                    conta.depositar(valorDeposito);
+                                    if(valorDeposito > 0){
+                                        conta.depositar(valorDeposito);
+
+                                    }else{
+                                        System.out.println("Valor invalido!");
+                                    }
+
+                                    break;
 
 
                                 case 4:
+                                    System.out.println(" === Saque === ");
+                                    System.out.println("Insira o valor que deseja sacar: ");
+                                    double valorSaque;
+                                    try{
+                                        valorSaque = sc.nextDouble();
+                                        sc.nextLine();
+                                    } catch (java.util.InputMismatchException e) {
+                                        System.out.println("Erro: Valor invalido.");
+                                        sc.nextLine();
+                                        continue;
+                                    }
+                                    conta.sacar(valorSaque);
                                     break;
+
+
                                 case 5:
                                     ticketAcount = 1;
                                     break;
                             }
                         }
+                    } else{
+                        System.out.println("Senha incorreta!");
+                        break;
                     }
                 }else{
-                    System.out.println("Não foi possivel realizar o Login! ");
+                    System.out.println("Não foi possivel localizar esta conta! ");
                     break;
                 }
+                break;
 
 
             case 3:
