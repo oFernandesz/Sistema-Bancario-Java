@@ -78,8 +78,8 @@ void main(){
                     sc.nextLine();
                     continue;
                 }
-                if(banco.buscarConta(numAcess) != null){
-                    Conta conta = banco.buscarConta(numAcess);
+                Conta conta = banco.buscarConta(numAcess);
+                if(conta != null){
                     if(conta.validarSenha(senhaAcess)){
                         int ticketAcount = 0;
                         while(ticketAcount == 0){
@@ -119,7 +119,7 @@ void main(){
                                         continue;
                                     }
                                     Conta destino = banco.buscarConta(numDestino);
-                                    if(destino != null){
+                                    if(destino != conta && destino != null){
                                         System.out.println("Conta a transferir: "+destino.getName());
                                     } else{
                                         System.out.println("Conta não encontrada! ");
@@ -187,6 +187,10 @@ void main(){
 
                                 case 5:
                                     ticketAcount = 1;
+                                    break;
+
+                                default:
+                                    System.out.println("Opção inválida. Tente novamente.");
                                     break;
                             }
                         }
